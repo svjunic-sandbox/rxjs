@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-import { of, from, fromEvent } from 'rxjs';
+import { of, from, fromEvent, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 of(1, 2, 3);
 
 of(1, 2, 3).pipe(map(x => x + '!!!'));
@@ -25,7 +24,7 @@ const variables = {
   num: 0
 };
 
-function getTweets() {
+function getTweets(): Observable<any> {
   //古い書き方
   //return Observable.fromPromise(
   return from(
@@ -37,19 +36,18 @@ function getTweets() {
 }
 
 getTweets().subscribe(res => {
-  let taglists = res.data.data.getTweets.map(val => {
+  let taglists = res.data.data.getTweets.map((val: any): any => {
     return val.hashtags;
   });
 
-  console.log(taglists.flat());
+  taglists = taglists.flat();
 
-  var counts = {};
+  const counts = {};
 
-  for (var i = 0; i < myCurrentArray.length; i++) {
-    var key = myCurrentArray[i];
+  for (let i = 0; i < taglists.length; i++) {
+    const key = taglists[i];
     counts[key] = counts[key] ? counts[key] + 1 : 1;
   }
 
-  alert(counts['apple']);
-  alert(counts['banana']);
+  console.log(counts);
 });
