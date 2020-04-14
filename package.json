@@ -7,26 +7,18 @@
     "webpack": "BABEL_ENV=development NODE_ENV=development webpack --config webpack.config.js --mode development --colors --display-error-details --progress",
     "minify": "BABEL_ENV=production NODE_ENV=production webpack --config webpack.config.js --colors --display-error-details --progress --mode production"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-typescript": "^7.8.3",
     "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
     "babel-loader": "^8.0.6",
+    "core-js": "^3.6.5",
     "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",

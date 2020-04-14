@@ -15,13 +15,14 @@ observable.subscribe(next => console.log(next));
 const query = `
   query($num:Int) {
     getTweets(num:$num) {
-      original_tweet_id
+      hashtags
     }
   }
 `;
 
 const variables = {
-  num: 20
+  //num: 20
+  num: 0
 };
 
 function getTweets() {
@@ -35,11 +36,20 @@ function getTweets() {
   );
 }
 
-getTweets()
-  .pipe(res => {
-    res.mogeta = true;
-    return res;
-  })
-  .subscribe(res => {
-    console.log(res);
+getTweets().subscribe(res => {
+  let taglists = res.data.data.getTweets.map(val => {
+    return val.hashtags;
   });
+
+  console.log(taglists.flat());
+
+  var counts = {};
+
+  for (var i = 0; i < myCurrentArray.length; i++) {
+    var key = myCurrentArray[i];
+    counts[key] = counts[key] ? counts[key] + 1 : 1;
+  }
+
+  alert(counts['apple']);
+  alert(counts['banana']);
+});

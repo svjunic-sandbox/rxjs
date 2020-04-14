@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-env"],
+  "presets": ["@babel/preset-env","@babel/preset-typescript"],
   "env": {
     "development": {
       "presets": [
@@ -25,7 +25,8 @@
             "useBuiltIns": "usage",
             "corejs": 3
           }
-        ]
+        ],
+        "@babel/preset-typescript"
       ]
     },
     "production": {
@@ -52,7 +53,8 @@
             "useBuiltIns": "usage",
             "corejs": 3
           }
-        ]
+        ],
+        "@babel/preset-typescript"
       ]
     }
   }
