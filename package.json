@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "develop": "npm run webpack -- --devtool inline-source-map --watch",
+    "dev": "npm run webpack -- --devtool inline-source-map --watch",
     "webpack": "BABEL_ENV=development NODE_ENV=development webpack --config webpack.config.js --mode development --colors --display-error-details --progress",
     "minify": "BABEL_ENV=production NODE_ENV=production webpack --config webpack.config.js --colors --display-error-details --progress --mode production"
   },
