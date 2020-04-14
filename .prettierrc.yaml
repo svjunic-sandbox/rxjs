@@ -1,0 +1,53 @@
+overrides:
+  - files: "*.js"
+    options:
+      printWidth: 300
+      singleQuote: true
+      bracketSpacing: true
+      tabWidth: 2
+      useTabs: false
+      semi: true
+
+  - files: "*.html"
+    options:
+      printWidth: 1000000000
+      tabWidth: 2
+      useTabs: false
+
+  - files: "*.css"
+    options:
+      tabWidth: 2
+      useTabs: false
+
+  - files: "*.scss"
+    options:
+      printWidth: 100000
+      tabWidth: 2
+      useTabs: false
+
+  - files: "*.vue"
+    options:
+      printWidth: 300
+      singleQuote: true
+      bracketSpacing: true
+      tabWidth: 2
+      useTabs: false
+      semi: true
+
+  - files: "*.ts"
+    options:
+      printWidth: 450
+      singleQuote: true
+      bracketSpacing: true
+      tabWidth: 2
+      useTabs: false
+      semi: true
+
+  - files: "*.tsx"
+    options:
+      printWidth: 450
+      singleQuote: true
+      bracketSpacing: true
+      tabWidth: 2
+      useTabs: false
+      semi: true

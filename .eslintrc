@@ -5,9 +5,7 @@
     "es6": true
   },
   "plugins": [
-    "prettier",
     "@typescript-eslint",
-    "react-hooks"
   ],
   "extends": [
     "eslint:recommended", 
@@ -55,8 +53,6 @@
         "ignoreProperties": true,
         "ignoreParameters": true
       }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    ]
   }
 }
