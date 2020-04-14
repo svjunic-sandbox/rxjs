@@ -11,7 +11,7 @@ const RESOURCES_ROOT = './src/';
 
 module.exports = function() {
   const entries = {
-    'js/index': path.join(__dirname, `${RESOURCES_ROOT}index.tsx`)
+    'js/index': path.join(__dirname, `${RESOURCES_ROOT}index.ts`)
   };
 
   const watchOptions = {
