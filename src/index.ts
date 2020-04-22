@@ -1,15 +1,7 @@
 import axios from 'axios';
 
-import { of, from, fromEvent, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-of(1, 2, 3);
-
-of(1, 2, 3).pipe(map(x => x + '!!!'));
-
-fromEvent(document.querySelector('#sample'), 'click').subscribe(event => console.log(event));
-
-const observable = from([1, 2, 3]);
-observable.subscribe(next => console.log(next));
+import { from, fromEvent, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 const query = `
   query($num:Int) {
@@ -24,18 +16,22 @@ const variables = {
   num: 0
 };
 
-function getTweets(): Observable<any> {
-  //古い書き方
-  //return Observable.fromPromise(
-  return from(
-    axios.post('http://127.0.0.1:3001/api/', {
+const observable$ = Observable.create(observer => {
+  axios
+    .post('http://127.0.0.1:3001/api/', {
       query: query,
       variables: variables
     })
-  );
-}
+    .then(response => {
+      observer.next(response.data);
+      observer.complete();
+    })
+    .catch(error => {
+      observer.error(error);
+    });
+});
 
-getTweets().subscribe(res => {
+const remakeShowData = (res: any) => {
   let taglists = res.data.data.getTweets.map((val: any): any => {
     return val.hashtags;
   });
@@ -49,5 +45,19 @@ getTweets().subscribe(res => {
     counts[key] = counts[key] ? counts[key] + 1 : 1;
   }
 
-  console.log(counts);
-});
+  return counts;
+};
+
+//
+fromEvent(document.querySelector('#load'), 'click')
+  // どっちがいいのか
+  //.pipe(() => getTweets$)
+  //.pipe(tap(e => console.log('1', e)))
+  // どっちがいいのか
+  .pipe(
+    () => getTweets$,
+    tap(e => console.log('1', e)),
+    map(res => remakeShowData(res)),
+    tap(e => console.log('2', e))
+  );
+//.subscribe(event => console.log('complete', event));
