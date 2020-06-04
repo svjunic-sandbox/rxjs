@@ -8,7 +8,7 @@ import axios from 'axios';
 // 非同期パターンいろいろ
 // https://github.com/LeoLovina/react_practice/blob/cbca154f2f8f8f726b17fb924fb3e78903e7399a/react-webpack/src/rxjsTest/ApiTest.tsx
 
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { from, fromEvent } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 
@@ -163,3 +163,10 @@ sequence.subscribe({
 // 2
 // 3
 // Finished sequence
+
+empty()
+  .pipe(tap(() => console.log('test')))
+  .subscribe({
+    next: () => console.log('test221'),
+    complete: () => console.log('test222')
+  });
