@@ -20,7 +20,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false, // export必須
     "typeRoots" : ["./src/@types"]
   },
   "include": [
